@@ -18,18 +18,10 @@ public class SearchController {
     @Autowired
     private SearchRepository searchRepository;
 
-    @GetMapping
-    public List<Search> listar(){
-        return searchRepository.findAll();
-    }
-
     @GetMapping("/id")
-    public Search procurar(@PathVariable long id){
+    public Search procurar(@PathVariable long id) {
         return searchService.getToSearch(id);
     }
 
-    @PostMapping
-    public Search adicionar(@RequestBody Search search){
-        return searchRepository.save(search);
-    }
+
 }

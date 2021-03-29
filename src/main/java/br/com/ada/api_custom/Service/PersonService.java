@@ -21,11 +21,11 @@ public class PersonService {
 
     public Person getToPerson(long id){
         try{
-        Person p = starWarsRepository.getToPerson(id);
-        p.setId(id);
-        return p;
-        }catch(Exception e){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Id not found", e);
+        Person person = starWarsRepository.getToPerson(id);
+        person.setId(id);
+        return person;
+        }catch(Exception exception){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Id not found", exception);
 
         }
     }
