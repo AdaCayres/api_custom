@@ -20,11 +20,14 @@ public class PersonService {
     StarWarsRepository starWarsRepository;
 
     public Person getToPerson(long id){
+        System.out.println("["+ System.nanoTime() +"]" + "Looking for person in the SWAPI database");
         try{
-        Person person = starWarsRepository.getToPerson(id);
-        person.setId(id);
-        return person;
+            Person person = starWarsRepository.getToPerson(id);
+            person.setId(id);
+            System.out.println("["+ System.nanoTime() +"]" + "Found person " + person.getName() + " in the SWAPI database");
+            return person;
         }catch(Exception exception){
+            System.out.println("["+ System.nanoTime() +"]" + "Person not found in the SWAPI database");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Id not found", exception);
 
         }

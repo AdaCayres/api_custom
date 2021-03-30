@@ -19,20 +19,22 @@ public class SearchService {
     private SearchRepository searchRepository;
 
     public List<Search> listar() {
+        System.out.println("["+ System.nanoTime() +"]" + "Exhibiting all searches in our database");
         return searchRepository.findAll();
     }
 
 
     public Search getToSearch(long id){
+        System.out.println("["+ System.nanoTime() +"]" + "Looking for search in our database");
         Optional<Search> search = searchRepository.findById(id);
-
-        if(!search.isPresent()) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Id not found");
-
+        if(!search.isPresent())throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Id not found");
+        System.out.println("["+ System.nanoTime() +"]" + "Found search in our database");
         return search.get();
     }
 
 
     public Search adicionar(@RequestBody Search search) {
+        System.out.println("["+ System.nanoTime() +"]" + "Saving search in our database");
         return searchRepository.save(search);
     }
 
