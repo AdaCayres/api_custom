@@ -15,10 +15,13 @@ public class SearchController {
 
     @Autowired
     private SearchService searchService;
-    @Autowired
-    private SearchRepository searchRepository;
 
-    @GetMapping("/id")
+    @GetMapping
+    public List<Search> listar(){
+        return searchService.listar();
+    }
+
+    @GetMapping("/{id}")
     public Search procurar(@PathVariable long id) {
         return searchService.getToSearch(id);
     }
