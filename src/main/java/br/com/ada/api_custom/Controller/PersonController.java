@@ -13,7 +13,7 @@ public class PersonController {
 
 
     @Autowired
-    private PersonService service;
+    private PersonService personService;
     @Autowired
     private SearchService searchService;
 
@@ -23,7 +23,7 @@ public class PersonController {
         Search search = new Search();
         search.setUri("/people/" + id + "/" );
         searchService.adicionar(search);
-        return service.getToPerson(id);
+        return personService.getToPerson(id);
     }
 
 
