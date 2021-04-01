@@ -21,7 +21,7 @@ public class SearchController {
         return searchService.listar();
     }
 
-    @GetMapping("/id")
+    @GetMapping("/{id}")
     public Search procurar(@PathVariable long id) {
         return searchService.getToSearch(id);
     }
