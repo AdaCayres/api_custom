@@ -22,10 +22,10 @@ public class PersonController {
     public Person procurar(@PathVariable Long id){
         Search search = new Search();
         search.setUri("/people/" + id + "/" );
+
+        Person person = personService.getToPerson(id);
         searchService.adicionar(search);
-        return personService.getToPerson(id);
+        return person;
     }
-
-
 
 }
